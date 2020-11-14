@@ -7,13 +7,16 @@
 
 import UIKit
 
-class HomeController: UIViewController {
+class HomeController: UITableViewController {
+    
+    let cellID = "cellID"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .secondarySystemBackground
         setupNavigationStyle()
-        
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
+        tableView.tableFooterView = UIView()
     }
 
     
@@ -35,6 +38,25 @@ class HomeController: UIViewController {
         print("Adding Purchase Order...")
     }
     
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
+        cell.textLabel?.text = "Purchase Order"
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 8
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = .systemGray5
+        return view
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
 
 }
 
