@@ -10,6 +10,12 @@ import UIKit
 class HomeController: UITableViewController {
     
     let cellID = "cellID"
+    
+    let purchaseOrders = [
+        PurchaseOrder(poID: 1, noOfItems: 6, lastUpdated: Date()),
+        PurchaseOrder(poID: 2, noOfItems: 3, lastUpdated: Date()),
+        PurchaseOrder(poID: 3, noOfItems: 5, lastUpdated: Date())
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +28,6 @@ class HomeController: UITableViewController {
     
     fileprivate func setupNavigationStyle() {
         navigationItem.title = "Home"
-        navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.prefersLargeTitles = true
         
         let plusImageConfig = UIImage.SymbolConfiguration(pointSize: 140)
@@ -36,16 +41,22 @@ class HomeController: UITableViewController {
     
     @objc fileprivate func handleAddPO() {
         print("Adding Purchase Order...")
+        
+        // Creating AddPurchaseOrderController
+        let addPurchaseOrderController = AddPurchaseOrderController()
+        let navController = UINavigationController(rootViewController: addPurchaseOrderController)
+        present(navController, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
-        cell.textLabel?.text = "Purchase Order"
+        let purchaseOrder = purchaseOrders[indexPath.row]
+        cell.textLabel?.text = String(purchaseOrder.poID)
         return cell
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return purchaseOrders.count
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

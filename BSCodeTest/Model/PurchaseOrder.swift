@@ -8,5 +8,9 @@
 import Foundation
 
 struct PurchaseOrder {
-    let name: String
+    let poID: Int
+    let noOfItems: Int
+    let lastUpdated: Date
 }
+
+
