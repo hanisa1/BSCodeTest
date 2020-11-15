@@ -7,15 +7,17 @@
 
 import UIKit
 
-class HomeController: UITableViewController {
+class HomeController: UITableViewController, AddPurchaseOrderControllerDelegate {
+    
     
     let cellID = "cellID"
     
-    let purchaseOrders = [
-        PurchaseOrder(poID: 1, noOfItems: 6, lastUpdated: Date()),
-        PurchaseOrder(poID: 2, noOfItems: 3, lastUpdated: Date()),
-        PurchaseOrder(poID: 3, noOfItems: 5, lastUpdated: Date())
+    var purchaseOrders = [
+        PurchaseOrder(poID: "1", noOfItems: 6, lastUpdated: Date()),
+        PurchaseOrder(poID: "2", noOfItems: 3, lastUpdated: Date()),
+        PurchaseOrder(poID: "3", noOfItems: 5, lastUpdated: Date())
     ]
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +27,13 @@ class HomeController: UITableViewController {
         tableView.tableFooterView = UIView()
     }
 
+    func didAddPurchaseOrder(purchaseOrder: PurchaseOrder) {
+        
+        purchaseOrders.append(purchaseOrder)
+        
+        let newIndexPath = IndexPath(row: purchaseOrders.count - 1, section: 0)
+        tableView.insertRows(at: [newIndexPath], with: .automatic)
+    }
     
     fileprivate func setupNavigationStyle() {
         navigationItem.title = "Home"
@@ -45,6 +54,8 @@ class HomeController: UITableViewController {
         // Creating AddPurchaseOrderController
         let addPurchaseOrderController = AddPurchaseOrderController()
         let navController = UINavigationController(rootViewController: addPurchaseOrderController)
+        
+        addPurchaseOrderController.delegate = self
         present(navController, animated: true)
     }
     

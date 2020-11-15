@@ -8,7 +8,7 @@
 import Foundation
 
 struct PurchaseOrder {
-    let poID: Int
+    let poID: String
     let noOfItems: Int
     let lastUpdated: Date
 }

@@ -7,18 +7,26 @@
 
 import UIKit
 
-class AddPurchaseOrderController: UIViewController {
+protocol AddPurchaseOrderControllerDelegate {
+    func didAddPurchaseOrder(purchaseOrder: PurchaseOrder)
+}
 
-    let nameLabel: UILabel = {
+class AddPurchaseOrderController: UIViewController {
+    
+    var delegate: AddPurchaseOrderControllerDelegate?
+    
+    let purchaseOrderIDLabel: UILabel = {
         let label = UILabel()
-        label.text = "Name"
+        label.text = "Purchase Order ID :"
         //enable autolayout
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    let nameTextField: UITextField = {
+    let poIdTextField: UITextField = {
         let textField = UITextField()
+        textField.placeholder = "Enter Purchase Order ID"
+        textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
 
@@ -35,16 +43,38 @@ class AddPurchaseOrderController: UIViewController {
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Add Purchase Order"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(handleSave))
     }
 
     fileprivate func setupUI() {
-        view.addSubview(nameLabel)
-        nameLabel.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        nameLabel.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        nameLabel.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        nameLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        view.addSubview(purchaseOrderIDLabel)
+        purchaseOrderIDLabel.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        purchaseOrderIDLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
         
-        nameLabel.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
+        purchaseOrderIDLabel.widthAnchor.constraint(equalToConstant: 170).isActive = true
+//        purchaseOrderIDLabel.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        purchaseOrderIDLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        purchaseOrderIDLabel.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
+        
+        view.addSubview(poIdTextField)
+        poIdTextField.leftAnchor.constraint(equalTo: purchaseOrderIDLabel.rightAnchor).isActive = true
+        poIdTextField.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        poIdTextField.bottomAnchor.constraint(equalTo: purchaseOrderIDLabel.bottomAnchor).isActive = true
+        poIdTextField.topAnchor.constraint(equalTo: purchaseOrderIDLabel.topAnchor).isActive = true
+        
+    }
+    
+    @objc fileprivate func handleSave() {
+        print("Saving Purchase Order")
+        dismiss(animated: true)
+        
+        guard let poId = poIdTextField.text else { return }
+        
+        let purchaseOrder = PurchaseOrder(poID: poId, noOfItems: 4, lastUpdated: Date())
+        
+        delegate?.didAddPurchaseOrder(purchaseOrder: purchaseOrder)
+        
     }
 
 }
