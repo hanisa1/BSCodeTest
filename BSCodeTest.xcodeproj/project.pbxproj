@@ -49,7 +49,6 @@
 			isa = PBXGroup;
 			children = (
 				6040EF23255EA8A300C4CFF9 /* BSCodeTest */,
-				6040EF22255EA8A300C4CFF9 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,6 +58,7 @@
 				6040EF21255EA8A300C4CFF9 /* BSCodeTest.app */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		6040EF23255EA8A300C4CFF9 /* BSCodeTest */ = {
@@ -72,6 +72,7 @@
 				6040EF32255EA8A500C4CFF9 /* LaunchScreen.storyboard */,
 				6040EF35255EA8A500C4CFF9 /* Info.plist */,
 				6040EF2D255EA8A300C4CFF9 /* BSCodeTest.xcdatamodeld */,
+				6040EF22255EA8A300C4CFF9 /* Products */,
 			);
 			path = BSCodeTest;
 			sourceTree = "<group>";

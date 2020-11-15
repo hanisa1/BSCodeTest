@@ -6,17 +6,14 @@
 //
 
 import UIKit
+import CoreData
 
 class HomeController: UITableViewController, AddPurchaseOrderControllerDelegate {
     
     
     let cellID = "cellID"
     
-    var purchaseOrders = [
-        PurchaseOrder(poID: "1", noOfItems: 6, lastUpdated: Date()),
-        PurchaseOrder(poID: "2", noOfItems: 3, lastUpdated: Date()),
-        PurchaseOrder(poID: "3", noOfItems: 5, lastUpdated: Date())
-    ]
+    var purchaseOrders = [PurchaseOrder]()
     
 
     override func viewDidLoad() {
@@ -25,6 +22,33 @@ class HomeController: UITableViewController, AddPurchaseOrderControllerDelegate 
         setupNavigationStyle()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
         tableView.tableFooterView = UIView()
+        fetchPurchaseOrders()
+    }
+    
+    fileprivate func fetchPurchaseOrders() {
+        //Core Data fetch
+        let persistentContainer = NSPersistentContainer(name: "BSCodeTest")
+        persistentContainer.loadPersistentStores { (storeDescription, err) in
+            if let err = err {
+                fatalError("Loading of Store Failed: \(err)")
+            }
+        }
+        
+        let context = persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<PurchaseOrder>(entityName: "PurchaseOrder")
+        
+        do {
+            let purchaseOrders = try context.fetch(fetchRequest)
+            purchaseOrders.forEach({ (pOrder) in
+                print(pOrder.poID ?? "")
+            })
+        } catch let fetchErr {
+            print("Failed to fetch purchase orders: ", fetchErr)
+        }
+        
+        
+        
     }
 
     func didAddPurchaseOrder(purchaseOrder: PurchaseOrder) {
@@ -62,7 +86,7 @@ class HomeController: UITableViewController, AddPurchaseOrderControllerDelegate 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
         let purchaseOrder = purchaseOrders[indexPath.row]
-        cell.textLabel?.text = String(purchaseOrder.poID)
+        cell.textLabel?.text = String(purchaseOrder.poID ?? "")
         return cell
     }
     

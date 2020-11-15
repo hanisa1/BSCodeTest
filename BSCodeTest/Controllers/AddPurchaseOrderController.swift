@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 protocol AddPurchaseOrderControllerDelegate {
     func didAddPurchaseOrder(purchaseOrder: PurchaseOrder)
@@ -69,12 +70,36 @@ class AddPurchaseOrderController: UIViewController {
         print("Saving Purchase Order")
         dismiss(animated: true)
         
+        //Initialisation of Core Data Stack
+        
+        let persistentContainer = NSPersistentContainer(name: "BSCodeTest")
+        persistentContainer.loadPersistentStores { (storeDescription, err) in
+            if let err = err {
+                fatalError("Loading of Store Failed: \(err)")
+            }
+        }
+        
+        let context = persistentContainer.viewContext
+        
+        let purchaseOrder = NSEntityDescription.insertNewObject(forEntityName: "PurchaseOrder", into: context)
+        purchaseOrder.setValue(poIdTextField.text, forKey: "poID")
+        
+        //Preform the save
+        do {
+            try context.save()
+            
+        } catch let saveErr {
+            print("Failed to save Purchase Order: ", saveErr)
+        }
+        
+        
+        
         guard let poId = poIdTextField.text else { return }
         
-        let purchaseOrder = PurchaseOrder(poID: poId, noOfItems: 4, lastUpdated: Date())
-        
-        delegate?.didAddPurchaseOrder(purchaseOrder: purchaseOrder)
-        
+//        let purchaseOrder = PurchaseOrder(poID: poId, noOfItems: 4, lastUpdated: Date())
+//        
+//        delegate?.didAddPurchaseOrder(purchaseOrder: purchaseOrder)
+//        
     }
 
 }
