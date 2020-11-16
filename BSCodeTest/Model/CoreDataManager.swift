@@ -20,4 +20,21 @@ struct CoreDataManager {
         return container
     }()
     
+    
+    func fetchPurchaseOrders() -> [PurchaseOrder] {
+        //Core Data fetch
+        let context = persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<PurchaseOrder>(entityName: "PurchaseOrder")
+        
+        do {
+            let purchaseOrders = try context.fetch(fetchRequest)
+            return purchaseOrders
+            
+        } catch let fetchErr {
+            print("Failed to fetch purchase orders: ", fetchErr)
+            return []
+        }
+    }
+    
 }

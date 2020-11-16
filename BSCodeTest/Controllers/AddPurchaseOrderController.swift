@@ -143,14 +143,6 @@ class AddPurchaseOrderController: UIViewController {
             print("Failed to save Purchase Order: ", saveErr)
         }
         
-        
-        
-//        guard let poId = poIdTextField.text else { return }
-        
-//        let purchaseOrder = PurchaseOrder(poID: poId, noOfItems: 4, lastUpdated: Date())
-//        
-//        delegate?.didAddPurchaseOrder(purchaseOrder: purchaseOrder)
-//        
     }
 
 }
