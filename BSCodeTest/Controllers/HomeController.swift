@@ -27,14 +27,8 @@ class HomeController: UITableViewController, AddPurchaseOrderControllerDelegate 
     
     fileprivate func fetchPurchaseOrders() {
         //Core Data fetch
-        let persistentContainer = NSPersistentContainer(name: "BSCodeTest")
-        persistentContainer.loadPersistentStores { (storeDescription, err) in
-            if let err = err {
-                fatalError("Loading of Store Failed: \(err)")
-            }
-        }
         
-        let context = persistentContainer.viewContext
+        let context = CoreDataManager.shared.persistentContainer.viewContext
         
         let fetchRequest = NSFetchRequest<PurchaseOrder>(entityName: "PurchaseOrder")
         
@@ -43,6 +37,10 @@ class HomeController: UITableViewController, AddPurchaseOrderControllerDelegate 
             purchaseOrders.forEach({ (pOrder) in
                 print(pOrder.poID ?? "")
             })
+            
+            self.purchaseOrders = purchaseOrders
+            self.tableView.reloadData()
+            
         } catch let fetchErr {
             print("Failed to fetch purchase orders: ", fetchErr)
         }

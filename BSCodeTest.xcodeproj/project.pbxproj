@@ -17,6 +17,7 @@
 		6040EF3E255F7E6800C4CFF9 /* DetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6040EF3D255F7E6800C4CFF9 /* DetailsController.swift */; };
 		6040EF45255FD33F00C4CFF9 /* PurchaseOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6040EF44255FD33F00C4CFF9 /* PurchaseOrder.swift */; };
 		6040EF492560D97D00C4CFF9 /* AddPurchaseOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6040EF482560D97D00C4CFF9 /* AddPurchaseOrderController.swift */; };
+		605654DB25623BCD00E16AF8 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605654DA25623BCD00E16AF8 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		6040EF3D255F7E6800C4CFF9 /* DetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsController.swift; sourceTree = "<group>"; };
 		6040EF44255FD33F00C4CFF9 /* PurchaseOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseOrder.swift; sourceTree = "<group>"; };
 		6040EF482560D97D00C4CFF9 /* AddPurchaseOrderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPurchaseOrderController.swift; sourceTree = "<group>"; };
+		605654DA25623BCD00E16AF8 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				6040EF44255FD33F00C4CFF9 /* PurchaseOrder.swift */,
+				605654DA25623BCD00E16AF8 /* CoreDataManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 				6040EF25255EA8A300C4CFF9 /* AppDelegate.swift in Sources */,
 				6040EF3E255F7E6800C4CFF9 /* DetailsController.swift in Sources */,
 				6040EF27255EA8A300C4CFF9 /* SceneDelegate.swift in Sources */,
+				605654DB25623BCD00E16AF8 /* CoreDataManager.swift in Sources */,
 				6040EF2F255EA8A300C4CFF9 /* BSCodeTest.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

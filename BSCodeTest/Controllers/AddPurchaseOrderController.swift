@@ -68,18 +68,9 @@ class AddPurchaseOrderController: UIViewController {
     
     @objc fileprivate func handleSave() {
         print("Saving Purchase Order")
-        dismiss(animated: true)
         
-        //Initialisation of Core Data Stack
         
-        let persistentContainer = NSPersistentContainer(name: "BSCodeTest")
-        persistentContainer.loadPersistentStores { (storeDescription, err) in
-            if let err = err {
-                fatalError("Loading of Store Failed: \(err)")
-            }
-        }
-        
-        let context = persistentContainer.viewContext
+        let context = CoreDataManager.shared.persistentContainer.viewContext
         
         let purchaseOrder = NSEntityDescription.insertNewObject(forEntityName: "PurchaseOrder", into: context)
         purchaseOrder.setValue(poIdTextField.text, forKey: "poID")
@@ -88,13 +79,18 @@ class AddPurchaseOrderController: UIViewController {
         do {
             try context.save()
             
+            //Success
+            dismiss(animated: true) {
+                self.delegate?.didAddPurchaseOrder(purchaseOrder: purchaseOrder as! PurchaseOrder)
+            }
+            
         } catch let saveErr {
             print("Failed to save Purchase Order: ", saveErr)
         }
         
         
         
-        guard let poId = poIdTextField.text else { return }
+//        guard let poId = poIdTextField.text else { return }
         
 //        let purchaseOrder = PurchaseOrder(poID: poId, noOfItems: 4, lastUpdated: Date())
 //        
