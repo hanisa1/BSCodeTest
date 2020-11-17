@@ -8,6 +8,12 @@
 import UIKit
 
 extension HomeController {
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailsController = DetailsController()
+        navigationController?.pushViewController(detailsController, animated: true)
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
         let purchaseOrder = purchaseOrders[indexPath.row]

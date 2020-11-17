@@ -37,4 +37,25 @@ struct CoreDataManager {
         }
     }
     
+    func addItem(itemID: String, quantity: String) -> Error? {
+        let context = persistentContainer.viewContext
+        
+        //Create an Item
+        let item = NSEntityDescription.insertNewObject(forEntityName: "Item", into: context)
+        
+        item.setValue(itemID, forKey: "itemID")
+        item.setValue(quantity, forKey: "quantity")
+        
+        do {
+            try context.save()
+            return nil
+        } catch let err {
+            print("Error adding Item: ", err)
+            return err
+            
+        }
+        
+        
+    }
+    
 }

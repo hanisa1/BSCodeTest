@@ -20,6 +20,8 @@
 		605654E62562695D00E16AF8 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605654E52562695D00E16AF8 /* HomeHeaderView.swift */; };
 		605654EA2562762900E16AF8 /* HomeController+AddPurchaseOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605654E92562762900E16AF8 /* HomeController+AddPurchaseOrder.swift */; };
 		605654ED2562771F00E16AF8 /* HomeController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605654EC2562771F00E16AF8 /* HomeController+UITableView.swift */; };
+		605654F125635C9200E16AF8 /* AddItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605654F025635C9200E16AF8 /* AddItemController.swift */; };
+		605654F4256361BF00E16AF8 /* ItemHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605654F3256361BF00E16AF8 /* ItemHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		605654E52562695D00E16AF8 /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
 		605654E92562762900E16AF8 /* HomeController+AddPurchaseOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeController+AddPurchaseOrder.swift"; sourceTree = "<group>"; };
 		605654EC2562771F00E16AF8 /* HomeController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeController+UITableView.swift"; sourceTree = "<group>"; };
+		605654F025635C9200E16AF8 /* AddItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemController.swift; sourceTree = "<group>"; };
+		605654F3256361BF00E16AF8 /* ItemHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,7 @@
 				6040EF26255EA8A300C4CFF9 /* SceneDelegate.swift */,
 				6040EF24255EA8A300C4CFF9 /* AppDelegate.swift */,
 				6040EF482560D97D00C4CFF9 /* AddPurchaseOrderController.swift */,
+				605654F025635C9200E16AF8 /* AddItemController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -107,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				605654E52562695D00E16AF8 /* HomeHeaderView.swift */,
+				605654F3256361BF00E16AF8 /* ItemHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -193,9 +199,11 @@
 			files = (
 				6040EF29255EA8A300C4CFF9 /* HomeController.swift in Sources */,
 				6040EF492560D97D00C4CFF9 /* AddPurchaseOrderController.swift in Sources */,
+				605654F4256361BF00E16AF8 /* ItemHeaderView.swift in Sources */,
 				6040EF25255EA8A300C4CFF9 /* AppDelegate.swift in Sources */,
 				6040EF3E255F7E6800C4CFF9 /* DetailsController.swift in Sources */,
 				605654ED2562771F00E16AF8 /* HomeController+UITableView.swift in Sources */,
+				605654F125635C9200E16AF8 /* AddItemController.swift in Sources */,
 				605654E62562695D00E16AF8 /* HomeHeaderView.swift in Sources */,
 				6040EF27255EA8A300C4CFF9 /* SceneDelegate.swift in Sources */,
 				605654DB25623BCD00E16AF8 /* CoreDataManager.swift in Sources */,
