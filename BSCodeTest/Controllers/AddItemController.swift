@@ -7,8 +7,15 @@
 
 import UIKit
 
+protocol AddItemControllerDelegate {
+    func didAddItem(item: Item)
+}
+
 class AddItemController: UIViewController {
 
+    var purchaseOrder: PurchaseOrder?
+    var delegate: AddItemControllerDelegate?
+    
     let itemIDLabel: UILabel = {
         let label = UILabel()
         label.text = "Purchase Order ID :"
@@ -88,12 +95,17 @@ class AddItemController: UIViewController {
         
         guard let itemID = itemIdTextField.text else { return }
         guard let quantity = quantityTextField.text else { return }
+        guard let purchaseOrder = purchaseOrder else { return }
         
-        let error = CoreDataManager.shared.addItem(itemID: itemID, quantity: quantity)
-        if let error = error {
+        
+        let tuple = CoreDataManager.shared.addItem(itemID: itemID, quantity: quantity, purchaseOrder: purchaseOrder)
+        if let error = tuple.1 {
             print(error)
         } else {
-            dismiss(animated: true)
+            dismiss(animated: true) {
+                guard let addItem = tuple.0 else { return }
+                self.delegate?.didAddItem(item: addItem)
+            }
         }
         
         

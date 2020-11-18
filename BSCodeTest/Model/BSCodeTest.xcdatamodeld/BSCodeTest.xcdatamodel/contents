@@ -3,14 +3,16 @@
     <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
         <attribute name="itemID" optional="YES" attributeType="String"/>
         <attribute name="quantity" optional="YES" attributeType="String"/>
+        <relationship name="purchaseOrder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PurchaseOrder" inverseName="items" inverseEntity="PurchaseOrder"/>
     </entity>
     <entity name="PurchaseOrder" representedClassName="PurchaseOrder" syncable="YES" codeGenerationType="class">
         <attribute name="lastUpdated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="noItems" optional="YES" attributeType="String"/>
         <attribute name="poID" optional="YES" attributeType="String"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Item" inverseName="purchaseOrder" inverseEntity="Item"/>
     </entity>
     <elements>
-        <element name="PurchaseOrder" positionX="-63" positionY="-18" width="128" height="88"/>
-        <element name="Item" positionX="-63" positionY="9" width="128" height="73"/>
+        <element name="Item" positionX="-77.90234375" positionY="-26.45703125" width="128" height="88"/>
+        <element name="PurchaseOrder" positionX="-287.36328125" positionY="-118.33984375" width="128" height="103"/>
     </elements>
 </model>

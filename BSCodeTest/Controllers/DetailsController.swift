@@ -8,8 +8,15 @@
 import UIKit
 import CoreData
 
-class DetailsController: UITableViewController {
-
+class DetailsController: UITableViewController, AddItemControllerDelegate {
+    
+    func didAddItem(item: Item) {
+        items.append(item)
+        tableView.reloadData()
+    }
+    
+    var purchaseOrder: PurchaseOrder?
+    
     var items = [Item]()
     let cellItemID = "cellItemID"
     
@@ -22,17 +29,10 @@ class DetailsController: UITableViewController {
     }
     
     fileprivate func fetchitems() {
-        let context = CoreDataManager.shared.persistentContainer.viewContext
-        let request = NSFetchRequest<Item>(entityName: "Item")
         
-        do {
-            let items = try context.fetch(request)
-            self.items = items
-            
-        } catch let err {
-            print("Failed to fetch items: ", err)
-        }
-        
+        guard let purchaseOrderItems = purchaseOrder?.items?.allObjects as? [Item] else {return}
+        self.items = purchaseOrderItems
+
     }
     
     fileprivate func setupNavigationStyle() {
@@ -51,6 +51,8 @@ class DetailsController: UITableViewController {
     @objc fileprivate func handleAddItem() {
         print("Adding item.")
         let addItemOrderController = AddItemController()
+        addItemOrderController.delegate = self
+        addItemOrderController.purchaseOrder = purchaseOrder
         let navController = UINavigationController(rootViewController: addItemOrderController)
         present(navController, animated: true)
     }

@@ -11,6 +11,8 @@ extension HomeController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailsController = DetailsController()
+        let purchaseOrder = self.purchaseOrders[indexPath.row]
+        detailsController.purchaseOrder = purchaseOrder
         navigationController?.pushViewController(detailsController, animated: true)
     }
     

@@ -37,21 +37,23 @@ struct CoreDataManager {
         }
     }
     
-    func addItem(itemID: String, quantity: String) -> Error? {
+    func addItem(itemID: String, quantity: String, purchaseOrder: PurchaseOrder) -> (Item?, Error?) {
         let context = persistentContainer.viewContext
         
         //Create an Item
-        let item = NSEntityDescription.insertNewObject(forEntityName: "Item", into: context)
+        let item = NSEntityDescription.insertNewObject(forEntityName: "Item", into: context) as! Item
+        
+        item.purchaseOrder = purchaseOrder
         
         item.setValue(itemID, forKey: "itemID")
         item.setValue(quantity, forKey: "quantity")
         
         do {
             try context.save()
-            return nil
+            return (item, nil)
         } catch let err {
             print("Error adding Item: ", err)
-            return err
+            return (nil, err)
             
         }
         
