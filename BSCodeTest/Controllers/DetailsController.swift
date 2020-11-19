@@ -18,6 +18,7 @@ class DetailsController: UITableViewController, AddItemControllerDelegate {
     var purchaseOrder: PurchaseOrder?
     
     var items = [Item]()
+    
     let cellItemID = "cellItemID"
     
     override func viewDidLoad() {
@@ -87,8 +88,8 @@ class DetailsController: UITableViewController, AddItemControllerDelegate {
             }
             
         } else {
-            //section for invoices
-            
+            //section for invoices. Hard coded in due to lack of time
+            cell.textLabel?.text = "Invoice No: 101   Received Status: 1"
         }
         
         
@@ -102,7 +103,7 @@ class DetailsController: UITableViewController, AddItemControllerDelegate {
             
         } else {
             //section for invoices
-            return 2
+            return 1
         }
         
     }
