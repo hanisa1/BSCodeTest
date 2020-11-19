@@ -58,8 +58,14 @@ class DetailsController: UITableViewController, AddItemControllerDelegate {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = ItemHeaderView()
-        return view
+        if (section == 0){
+            let itemView = ItemHeaderView()
+            return itemView
+        } else {
+            let invoiceView = InvoiceHeaderView()
+            return invoiceView
+        }
+        
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -70,18 +76,37 @@ class DetailsController: UITableViewController, AddItemControllerDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellItemID, for: indexPath)
         let item = items[indexPath.row]
         
-        if let itemID = item.itemID, let quantity = item.quantity {
-            cell.textLabel?.text = "ItemID: \(itemID)   Quantity: \(quantity)"
-        } else {
-            cell.textLabel?.text = "ItemID: Unknown   Quantity: Unknown"
-        }
         
+        
+        if (indexPath.section == 0){
+            //section for items
+            if let itemID = item.itemID, let quantity = item.quantity {
+                cell.textLabel?.text = "ItemID: \(itemID)   Quantity: \(quantity)"
+            } else {
+                cell.textLabel?.text = "ItemID: Unknown   Quantity: Unknown"
+            }
+            
+        } else {
+            //section for invoices
+            
+        }
         
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        if (section == 0){
+            //section for items
+            return items.count
+            
+        } else {
+            //section for invoices
+            return 2
+        }
+        
+    }
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
     }
 }

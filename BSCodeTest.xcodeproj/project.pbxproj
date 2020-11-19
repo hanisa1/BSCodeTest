@@ -22,6 +22,8 @@
 		605654ED2562771F00E16AF8 /* HomeController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605654EC2562771F00E16AF8 /* HomeController+UITableView.swift */; };
 		605654F125635C9200E16AF8 /* AddItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605654F025635C9200E16AF8 /* AddItemController.swift */; };
 		605654F4256361BF00E16AF8 /* ItemHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605654F3256361BF00E16AF8 /* ItemHeaderView.swift */; };
+		605654F92564A69900E16AF8 /* InvoiceHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605654F82564A69900E16AF8 /* InvoiceHeaderView.swift */; };
+		605654FC2564AD5C00E16AF8 /* JSONService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605654FB2564AD5C00E16AF8 /* JSONService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		605654EC2562771F00E16AF8 /* HomeController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeController+UITableView.swift"; sourceTree = "<group>"; };
 		605654F025635C9200E16AF8 /* AddItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemController.swift; sourceTree = "<group>"; };
 		605654F3256361BF00E16AF8 /* ItemHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemHeaderView.swift; sourceTree = "<group>"; };
+		605654F82564A69900E16AF8 /* InvoiceHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceHeaderView.swift; sourceTree = "<group>"; };
+		605654FB2564AD5C00E16AF8 /* JSONService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,7 @@
 		6040EF23255EA8A300C4CFF9 /* BSCodeTest */ = {
 			isa = PBXGroup;
 			children = (
+				605654FB2564AD5C00E16AF8 /* JSONService.swift */,
 				6040EF43255FD2F800C4CFF9 /* View */,
 				6040EF42255FD2EC00C4CFF9 /* Model */,
 				6040EF41255FD2D400C4CFF9 /* Controllers */,
@@ -113,6 +118,7 @@
 			children = (
 				605654E52562695D00E16AF8 /* HomeHeaderView.swift */,
 				605654F3256361BF00E16AF8 /* ItemHeaderView.swift */,
+				605654F82564A69900E16AF8 /* InvoiceHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -209,6 +215,8 @@
 				605654DB25623BCD00E16AF8 /* CoreDataManager.swift in Sources */,
 				605654EA2562762900E16AF8 /* HomeController+AddPurchaseOrder.swift in Sources */,
 				6040EF2F255EA8A300C4CFF9 /* BSCodeTest.xcdatamodeld in Sources */,
+				605654F92564A69900E16AF8 /* InvoiceHeaderView.swift in Sources */,
+				605654FC2564AD5C00E16AF8 /* JSONService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

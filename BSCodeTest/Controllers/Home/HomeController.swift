@@ -23,6 +23,10 @@ class HomeController: UITableViewController {
         tableView.tableFooterView = UIView()
         
         self.purchaseOrders = CoreDataManager.shared.fetchPurchaseOrders()
+        
+        //Retreiving Purchase Orders from server
+        JSONService.shared.downloadPurchaseOrdersFromServer()
+        
     }
     
     

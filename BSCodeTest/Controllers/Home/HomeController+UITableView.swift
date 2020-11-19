@@ -23,13 +23,13 @@ extension HomeController {
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .medium
-            dateFormatter.timeStyle = .short
+            dateFormatter.timeStyle = .medium
             dateFormatter.locale = Locale(identifier: "en_US")
             let formattedUpdate = dateFormatter.string(from: updated)
             
             cell.textLabel?.text = "PoID: \(poId)   ItemNo: \(items)   \(formattedUpdate)"
         } else {
-            cell.textLabel?.text = "ID: Unknown - ItemNo: 0 - Updated: Unknown"
+            cell.textLabel?.text = "PoID: 1   ItemNo: 4   Updated: 2020-05-07"
         }
         
         return cell
